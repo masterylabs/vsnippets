@@ -1,0 +1,16 @@
+.wp-fullscreen-btn--in-fullscreen {
+	#wpcontent,
+	#footer {
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+
+	#wpbody {
+		padding-top: 0px;
+	}
+	#adminmenuback,
+	#adminmenuwrap,
+	#wpadminbar {
+		display: none;
+	}
+}

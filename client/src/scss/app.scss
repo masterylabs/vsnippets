@@ -1,0 +1,23 @@
+.v-card {
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.ml-drag-placeholder {
+	height: 0px;
+	transition: height 0.5s ease-in-out;
+}
+
+.ml-drag--active {
+	.ml-drag-placeholder {
+		// height: 5px;
+		height: 30px;
+	}
+}
+
+.ml-unselectable {
+	user-select: none;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-o-user-select: none;
+}

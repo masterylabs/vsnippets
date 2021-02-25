@@ -1,0 +1,6 @@
+<?php
+
+/**
+ * Requires following modules
+ * 
+ */

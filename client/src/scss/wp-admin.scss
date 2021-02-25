@@ -1,0 +1,36 @@
+div.notice {
+	display: none;
+}
+#wpcontent,
+#wpfooter {
+	margin-left: 140px;
+}
+body,
+#wpbody-content {
+	background: #ffffff !important;
+}
+#adminmenuwrap {
+	z-index: 200 !important;
+}
+#wpadminbar {
+	z-index: 201;
+}
+#wpfooter,
+.update-nag {
+	display: none;
+}
+
+@media only screen and (max-width: 960px) {
+	.auto-fold #wpcontent,
+	.auto-fold #wpfooter {
+		margin-left: 16px;
+	}
+}
+
+@media only screen and (max-width: 782px) {
+	.auto-fold #wpcontent,
+	.auto-fold #wpfooter {
+		margin-left: 0px;
+		padding-left: 0px;
+	}
+}
