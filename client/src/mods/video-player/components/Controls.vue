@@ -1,137 +1,150 @@
 <template>
-	<div>
-		<v-row class="video-player-controls " no-gutters :style="`height:${height}px`">
-			<video-player-play-btn
-				v-bind="buttonProps"
-				:can-play="canPlay"
-				:can-pause="canPause"
-				@click="$emit('play')"
-			/>
+  <div class="video-player-controls">
+    <v-card tile flat :style="`height:${height}px`" color="rgba(0,0,0,0)">
+      <v-row class="video-player-controls" :align="align" no-gutters>
+        <slot v-if="play" name="play-btn" />
 
-			<div class="grow">
-				<video-player-timeline
-					v-bind="timeline"
-					:duration="duration"
-					:current-time="currentTime"
-					:default-color="getColor"
-					:default-dark="getDark"
-					:icon-color="iconColor"
-					@click="$emit('timeline', $event)"
-				/>
-			</div>
+        <div v-if="timeline" class="grow">
+          <slot v-if="timeline" name="timeline" class="video-player-controls--timeline" />
+        </div>
 
-			<video-player-volume-btn
-				v-bind="buttonProps"
-				:volume="volume"
-				:is-muted="isMuted"
-				@volume="$emit('volume', $event)"
-				@toggle-mute="$emit('toggle-mute', $event)"
-			/>
+        <slot name="captions-btn" />
+        <slot name="settings-btn" />
+        <slot name="volume-btn" />
+        <slot name="fullscreen-btn" />
 
-			<video-player-fullscreen-btn
-				v-bind="buttonProps"
-				:is-fullscreen="isFullscreen"
-				@click="$emit('fullscreen')"
-			/>
-		</v-row>
-	</div>
+        <!--  <video-player-controls-play-btn
+          v-if="play"
+          v-bind="buttonProps"
+          :can-play="canPlay"
+          :can-pause="canPause"
+          class="video-player-controls--btn"
+          @click="$emit('play')"
+          @mouseenter="$emit('mouseenter')"
+          @mouseleave="$emit('mouseleave')"
+        />
+
+       
+
+        <video-player-controls-btn
+          v-if="captions"
+          v-bind="buttonProps"
+          :mdi="`closed-caption${isCaptions ? '' : '-outline'}`"
+          class="video-player-controls--btn"
+          @click="$emit('toggleCaptions')"
+        />
+
+        <video-player-controls-btn
+          v-if="settings"
+          v-bind="buttonProps"
+          mdi="cog"
+          class="video-player-controls--btn"
+          @click="$emit('settings')"
+        />
+
+        <video-player-controls-volume-btn
+          v-bind="buttonProps"
+          :volume="volume"
+          :is-muted="isMuted"
+          class="video-player-controls--btn"
+          @volume="$emit('volume', $event)"
+          @toggleMute="$emit('toggleMute', $event)"
+        />
+
+        <video-player-controls-fs-btn
+          v-bind="buttonProps"
+          :is-fullscreen="isFullscreen"
+          class="video-player-controls--btn"
+          @click="$emit('fullscreen')"
+        />
+        -->
+      </v-row>
+    </v-card>
+  </div>
 </template>
 
 <script>
-export default {
-	props: {
-		isFullscreen: Boolean,
-		isMuted: Boolean,
-		canPlay: Boolean,
-		canPause: Boolean,
-		volume: {
-			type: Number,
-			default: 1,
-		},
-		currentTime: {
-			type: Number,
-			default: 0,
-		},
-		duration: {
-			type: Number,
-			default: 60,
-		},
-		dark: {
-			type: Boolean,
-			default: null,
-		},
-		icon: Boolean,
-		tile: Boolean,
-		depressed: Boolean,
-		height: {
-			type: [Number, String],
-			default: 50,
-		},
-		width: {
-			type: [Number, String],
-			default: 50,
-		},
-		size: {
-			type: [Number, String],
-			default: 50,
-		},
-		color: {
-			type: String,
-			default: '',
-		},
-		iconColor: {
-			type: String,
-			default: '',
-		},
-		defaultDark: {
-			type: Boolean,
-			default: true,
-		},
-		defaultColor: {
-			type: String,
-			default: '',
-		},
-		timeline: {
-			type: Object,
-			default() {
-				return {}
-			},
-		},
-	},
-	computed: {
-		getDark() {
-			return this.dark !== null ? this.dark : this.defaultDark
-		},
-		getColor() {
-			return this.color ? this.color : this.defaultColor
-		},
-		getIconColor() {
-			return this.iconColor ? this.iconColor : this.getDark ? '#fff' : '#000'
-		},
-		buttonProps() {
-			console.log(this.getIconColor)
-			return {
-				height: this.height,
-				width: this.width,
-				size: this.size,
-				icon: this.icon,
-				tile: this.tile,
-				depressed: this.depressed,
-				color: this.getColor,
-				dark: this.getDark,
-				iconColor: this.getIconColor,
-			}
-		},
-	},
-}
-</script>
+  export default {
+    props: {
+      // states
+      isFullscreen: Boolean,
+      isMuted: Boolean,
+      canPlay: Boolean,
+      canPause: Boolean,
+      isCaptions: Boolean,
 
-<style scoped>
-.video-player-controls {
-	z-index: 300000;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	height: 50px;
-}
-</style>
+      // bool includes
+      play: Boolean,
+      timeline: Boolean,
+      captions: Boolean,
+      settings: Boolean,
+      sound: Boolean,
+      fullscreen: Boolean,
+
+      // bools design
+      icon: Boolean,
+      tile: Boolean,
+      depressed: Boolean,
+      dark: Boolean,
+
+      items: {
+        type: Array,
+        default() {
+          return []
+        },
+      },
+
+      volume: {
+        type: Number,
+        default: 1,
+      },
+
+      height: {
+        type: [Number, String],
+        default: 50,
+      },
+      align: {
+        type: [String],
+        default: 'center',
+      },
+      width: {
+        type: [Number, String],
+        default: 50,
+      },
+      size: {
+        type: [Number, String],
+        default: 50,
+      },
+      color: {
+        type: String,
+        default: '',
+      },
+      iconColor: {
+        type: String,
+        default: '',
+      },
+    },
+
+    data() {
+      return {
+        isSettings: false,
+      }
+    },
+
+    computed: {
+      buttonProps() {
+        return {
+          height: this.height,
+          width: this.width,
+          size: this.size,
+          icon: this.icon,
+          tile: this.tile,
+          depressed: this.depressed,
+          color: this.color,
+          dark: this.dark,
+          iconColor: this.iconColor,
+        }
+      },
+    },
+  }
+</script>

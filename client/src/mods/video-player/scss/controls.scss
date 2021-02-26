@@ -1,0 +1,12 @@
+.video-player-controls {
+  // z-index: 300000;
+  z-index: 5;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  pointer-events: none;
+}
+.video-player-controls--btn,
+.video-player-controls--timeline {
+  pointer-events: auto;
+}

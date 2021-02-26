@@ -1,0 +1,40 @@
+@import './controls-tooltip.scss';
+@import './poster.scss';
+@import './center-play.scss';
+@import './timeline.scss';
+@import './settings.scss';
+@import './controls';
+@import './loading';
+@import './mask';
+
+.video-player-video-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+
+  video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin-bottom: -7px;
+  }
+
+  div.btn__content {
+    padding: 0;
+  }
+
+  div.card__actions .btn {
+    min-width: 0;
+  }
+}
+
+.video-player-wrap {
+  iframe {
+    margin-bottom: -7px;
+    width: 100%;
+    height: 100%;
+  }
+}

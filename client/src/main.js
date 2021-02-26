@@ -12,19 +12,35 @@ import layouts from './plugins/layouts'
 // mods
 import VueClipboard from 'vue-clipboard2'
 
+// plugins
+import localforage from './plugins/localforage'
+
 // mods
 import WpFullscreenBtn from './plugins/wp-fullscreen-btn'
-import VideoSurvey from './mods/video-survey'
-import Mplayer from './mods/mplayer'
-import DragSort from './mods/drag-sort'
-import VideoPlayer from './mods/video-player'
-import VideoPlayerAdmin from './mods/video-player-admin'
 
-const modules = [WpFullscreenBtn, Mplayer, VideoSurvey, DragSort, VideoPlayer, VideoPlayerAdmin]
+import CardGrid from './mods/card-grid'
+import DragAndDrop from './mods/drag-and-drop'
+import DragSort from './mods/drag-sort'
+import VideoTrimmer from './mods/video-trimmer'
+import VideoPlayer from './mods/video-player'
+
+// import DurationField from './mods/duration-field'
+const modules = [
+  //
+  WpFullscreenBtn,
+  CardGrid,
+  DragAndDrop,
+  DragSort,
+  VideoTrimmer,
+  VideoPlayer,
+]
 
 import dev from './plugins/dev'
 console.log('dev plugin')
 Vue.use(dev)
+
+// plugins
+Vue.use(localforage)
 
 // mods
 Vue.use(VueClipboard)
@@ -37,8 +53,8 @@ Vue.use(ml, { store, ...config, modules, config })
 Vue.config.productionTip = false
 
 new Vue({
-	router,
-	store,
-	vuetify,
-	render: (h) => h(App),
+  router,
+  store,
+  vuetify,
+  render: (h) => h(App),
 }).$mount('#masteryl')

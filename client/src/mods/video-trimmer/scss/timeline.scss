@@ -1,0 +1,89 @@
+.video-trimmer-timeline-container {
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+
+.video-trimmer-timeline-handle {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 60px;
+  width: 200px;
+  cursor: pointer;
+}
+
+.video-trimmer-timeline-handle-left,
+.video-trimmer-timeline-handle-right {
+  width: 15px;
+  height: 60px;
+}
+.video-trimmer-timeline-handle-left {
+  margin-left: -15px;
+}
+.video-trimmer-timeline-handle-right {
+  margin-right: -15px;
+}
+
+.video-trimmer-timeline-handle-bg {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.video-trimmer-timeline-handle-duration {
+  position: absolute;
+  left: 0px;
+  bottom: 30px;
+  width: 100%;
+  pointer-events: none;
+}
+
+/**
+Maters **/
+
+$markers-color: #000;
+
+.video-trimmer-timeline-min {
+  font-size: 13px;
+  height: 13px;
+  bottom: 0px;
+  border-left: 1px solid $markers-color;
+
+  &:first-of-type {
+    border-left: none;
+  }
+
+  .video-trimmer-timeline-sec:first-of-type {
+    display: none;
+  }
+}
+
+.video-trimmer-timeline-min-label {
+  position: absolute;
+  left: -5px;
+  top: -22px;
+  color: $markers-color;
+}
+
+.video-trimmer-timeline-sec {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  height: 7px;
+  border-left: 1px solid $markers-color;
+
+  &.video-trimmer-timeline-sec-30 {
+    height: 12px;
+  }
+}
+
+.video-trimmer-timeline-digit-start,
+.video-trimmer-timeline-digit-end {
+  padding: 2px 0px;
+  top: -5px;
+}

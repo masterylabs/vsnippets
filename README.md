@@ -35,4 +35,10 @@ https://youtu.be/-c4yVUrVCzw
 Three Second Test Video Green
 https://youtu.be/gkZEhCeeXkI
 
+## Suggestions to core
+
+- install client and fix lint errors
+- mods
+- client layouts
+
 ## Changes to core

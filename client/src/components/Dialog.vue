@@ -12,6 +12,7 @@
 					:rounded="rounded"
 					:color="color"
 					:block="block"
+          :large="large"
 					v-bind="attrs"
 					v-on="on"
 				>
@@ -50,6 +51,7 @@ export default {
 		disabled: Boolean,
 		rounded: Boolean,
 		block: Boolean,
+    large: Boolean,
 		color: {
 			type: String,
 			default: '',

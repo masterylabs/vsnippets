@@ -5,6 +5,4 @@ $args = [
   // 'middleware' => ''
 ];
 
-$app->api($args, function() use($app) {
-  $app->get('/sample', 'SampleController@api');
-});
+$app->collection('video');

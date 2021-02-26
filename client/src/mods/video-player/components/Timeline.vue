@@ -1,242 +1,240 @@
 <template>
-	<v-hover v-slot="{ hover }">
-		<div
-			ref="timeline"
-			class="video-player-timeline white--text"
-			:style="{ height: `${height}px` }"
-			@mousemove="onMousemove"
-			@mousedown="onMousedown"
-		>
-			<div class="video-player-timeline-click" v-on:click="onClick">
-				<div class="video-player-timeline-bg" :style="{ background: getColor, opacity: bgOpacity }" />
-				<v-row
-					no-gutters
-					align="center"
-					justify="end"
-					style="height:100%"
-					class="video-player-timeline-progress"
-					:style="{
-						background: progressColor || getColor,
-						opacity: progressOpacity,
-						width: `${progressWidth}%`,
-						borderRight: `1px solid ${getDark ? iconColor : 'black'}`,
-					}"
-				>
-					<div class="mr-n11x mr-2"></div>
-				</v-row>
+  <v-hover v-slot="{ hover }">
+    <div
+      ref="timeline"
+      class="video-player-timeline white--text"
+      :style="{ height: `${height}px` }"
+      @mousemove="onMousemove"
+      @mousedown="onMousedown"
+    >
+      <div class="video-player-timeline-click" v-on:click="onClick">
+        <div
+          class="video-player-timeline-bg"
+          :style="{ background: color, opacity: bgOpacity }"
+        />
+        <v-row
+          no-gutters
+          align="center"
+          justify="end"
+          style="height:100%"
+          class="video-player-timeline-progress"
+          :style="{
+            background: progressColor || color,
+            opacity: progressOpacity,
+            width: `${progressWidth}%`,
+            borderRight: `1px solid ${iconColor}`,
+          }"
+        >
+          <div class="mr-n11x mr-2"></div>
+        </v-row>
 
-				<v-row
-					v-if="hover"
-					no-gutters
-					align="center"
-					justify="end"
-					style="height:100%"
-					class="video-player-timeline-preview"
-					:style="{
-						...preview,
-						width: `${previewLeft}px`,
-						borderRight: `1px solid ${!getDark ? iconColor : 'rgba(0,0,0,0.5)'}`,
-					}"
-				>
-					<div :class="previewTextRight ? 'mr-n5' : 'mr-2'"></div>
-				</v-row>
-			</div>
+        <v-row
+          v-if="hover && duration"
+          no-gutters
+          align="center"
+          justify="end"
+          style="height:100%"
+          class="video-player-timeline-preview"
+          :style="{
+            ...preview,
+            width: `${previewLeft}px`,
+            borderRight: `1px solid ${color}`,
+          }"
+        >
+          <div :class="previewTextRight ? 'mr-n5' : 'mr-2'"></div>
+        </v-row>
+      </div>
 
-			<template v-if="!noTooltips">
-				<v-fade-transition>
-					<video-player-tooltip
-						v-if="hover"
-						:left="progressWidth"
-						:value="currentTime"
-						:inverse="getDark"
-						:icon-color="iconColor"
-					/>
-				</v-fade-transition>
-				<v-fade-transition>
-					<video-player-tooltip
-						v-if="hover"
-						:left="previewLeft"
-						:value="previewValue"
-						px
-						:inverse="!getDark"
-					/>
-				</v-fade-transition>
-			</template>
-		</div>
-	</v-hover>
+      <template v-if="!noTooltips">
+        <v-fade-transition>
+          <video-player-timeline-tooltip
+            v-if="hover && duration"
+            :left="previewLeft"
+            :value="previewValue"
+            px
+            :color="color"
+            :text-color="iconColor"
+          />
+        </v-fade-transition>
+        <v-fade-transition>
+          <video-player-timeline-tooltip
+            v-if="hover && duration"
+            :left="progressWidth"
+            :value="currentTime"
+            :color="iconColor"
+            :text-color="color"
+            is-progress
+            easing
+          />
+        </v-fade-transition>
+      </template>
+
+      <div
+        v-if="showCurrentTime || showDuration"
+        class="video-player-timeline-times"
+      >
+        <v-row
+          class="mx-3"
+          align="center"
+          :justify="!showCurrentTime ? 'end' : 'space-between'"
+          style="height:100%"
+          no-gutters
+        >
+          <div v-if="showCurrentTime">{{ currentTime | pretty }}</div>
+          <div v-if="showDuration">{{ duration | pretty }}</div>
+        </v-row>
+      </div>
+    </div>
+  </v-hover>
 </template>
 
 <script>
-// import { prettyTime } from '../mixins/helpers'
-export default {
-	props: {
-		dark: {
-			type: Boolean,
-			default: null,
-		},
-		noTooltips: Boolean,
-		currentTime: {
-			type: Number,
-			default: 0,
-		},
-		duration: {
-			type: Number,
-			default: 60,
-		},
-		height: {
-			type: [String, Number],
-			default: 40,
-		},
-		color: {
-			type: String,
-			default: '',
-		},
-		progressColor: {
-			type: String,
-			default: '',
-		},
-		bgOpacity: {
-			type: [String, Number],
-			default: 0.4,
-		},
-		progressOpacity: {
-			type: [String, Number],
-			default: 0.65,
-		},
+  import { prettyTime } from '../helpers/helpers'
+  export default {
+    props: {
+      showCurrentTime: Boolean,
+      showDuration: Boolean,
+      dark: {
+        type: Boolean,
+        default: null,
+      },
+      noTooltips: Boolean,
+      currentTime: {
+        type: Number,
+        default: 0,
+      },
+      duration: {
+        type: Number,
+        default: 60,
+      },
+      height: {
+        type: [String, Number],
+        default: 40,
+      },
+      color: {
+        type: String,
+        default: '',
+      },
+      progressColor: {
+        type: String,
+        default: '',
+      },
+      bgOpacity: {
+        type: [String, Number],
+        default: 0.4,
+      },
+      progressOpacity: {
+        type: [String, Number],
+        default: 0.65,
+      },
 
-		defaultColor: {
-			type: String,
-			default: '',
-		},
-		defaultDark: {
-			type: Boolean,
-			default: true,
-		},
+      defaultColor: {
+        type: String,
+        default: '',
+      },
+      defaultDark: {
+        type: Boolean,
+        default: true,
+      },
 
-		progress: {
-			type: Object,
-			default() {
-				return {}
-			},
-		},
-		preview: {
-			type: Object,
-			default() {
-				return {}
-			},
-		},
-		iconColor: {
-			type: String,
-			default: '',
-		},
-	},
+      progress: {
+        type: Object,
+        default() {
+          return {}
+        },
+      },
+      preview: {
+        type: Object,
+        default() {
+          return {}
+        },
+      },
+      iconColor: {
+        type: String,
+        default: '',
+      },
+    },
 
-	data() {
-		return {
-			previewLeft: 0,
-			previewWidth: 50,
-			isDrag: 0,
-			dragWait: null,
-		}
-	},
+    data() {
+      return {
+        previewLeft: 0,
+        previewWidth: 50,
+        isDrag: 0,
+        dragWait: null,
+        isMounted: false,
+      }
+    },
 
-	computed: {
-		getDark() {
-			return this.dark !== null ? this.dark : this.defaultDark
-		},
-		getColor() {
-			return this.color ? this.color : this.defaultColor
-		},
+    computed: {
+      progressWidth() {
+        // if (!this.duration || !this.$refs.timeline) return 0 // start animation from left
+        if (!this.duration || !this.isMounted) return 0 // start animation from left
+        // const progress = this.currentTime / this.duration
+        // const value = progress * 100
+        // const width = Math.floor(width)
+        // console.log({ progress, value, width })
+        return Math.floor((this.currentTime / this.duration) * 100)
+      },
+      previewValue() {
+        if (!this.isMounted) return 0
+        // if (!this.$refs.timeline) return 0
 
-		progressWidth() {
-			return Math.floor((this.currentTime / this.duration) * 100)
-		},
-		previewValue() {
-			if (!this.$refs.timeline) return 0
+        let value = this.previewLeft / this.$refs.timeline.clientWidth
+        value = value * this.duration
 
-			let value = this.previewLeft / this.$refs.timeline.clientWidth
-			value = value * this.duration
+        if (value < 1) value = 0
+        else if (value > this.duration - 1) value = this.duration
 
-			if (value < 1) value = 0
-			else if (value > this.duration - 1) value = this.duration
+        return Math.floor(value)
+      },
+      previewTextRight() {
+        return this.previewLeft < 25 ? true : false
+      },
+    },
 
-			return Math.floor(value)
-		},
-		previewTextRight() {
-			return this.previewLeft < 25 ? true : false
-		},
-	},
+    methods: {
+      onClick({ offsetX }) {
+        let value = (offsetX / this.$refs.timeline.clientWidth) * this.duration
+        this.$emit('click', value)
+      },
+      onMousemove({ offsetX }) {
+        this.previewLeft = offsetX || 0
 
-	methods: {
-		onClick({ offsetX }) {
-			let value = (offsetX / this.$refs.timeline.clientWidth) * this.duration
-			this.$emit('click', value)
-		},
-		onMousemove({ offsetX }) {
-			this.previewLeft = offsetX || 0
+        if (this.isDrag) {
+          clearTimeout(this.dragWait)
+          this.dragWait = setTimeout(() => {
+            this.onClick({ offsetX })
+          }, 10)
+        }
+      },
+      onMousedown() {
+        this.isDrag = true
+      },
 
-			if (this.isDrag) {
-				clearTimeout(this.dragWait)
-				this.dragWait = setTimeout(() => {
-					this.onClick({ offsetX })
-				}, 10)
-			}
-		},
-		onMousedown() {
-			this.isDrag = true
-		},
+      onMouseup() {
+        if (this.isDrag) {
+          clearTimeout(this.dragWait)
+          this.isDrag = false
+        }
+      },
+    },
 
-		onMouseup() {
-			if (this.isDrag) {
-				clearTimeout(this.dragWait)
-				this.isDrag = false
-			}
-		},
-	},
+    beforeDestroy() {
+      document.removeEventListener('mouseup', this.onMouseup)
+    },
 
-	// filters: {
-	// 	pretty(n) {
-	// 		return prettyTime(n)
-	// 	},
-	// },
+    mounted() {
+      document.addEventListener('mouseup', this.onMouseup)
 
-	beforeDestroy() {
-		document.removeEventListener('mouseup', this.onMouseup)
-	},
-
-	mounted() {
-		document.addEventListener('mouseup', this.onMouseup)
-	},
-}
+      setInterval(() => {
+        // console.log('currentTime', this.currentTime)
+      }, 1500)
+      this.isMounted = true
+    },
+    filters: {
+      pretty(t) {
+        return prettyTime(t)
+      },
+    },
+  }
 </script>
-
-<style>
-.video-player-timeline {
-	position: relative;
-}
-.video-player-timeline-click {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-}
-.video-player-timeline-bg,
-.video-player-timeline-progress,
-.video-player-timeline-preview {
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	pointer-events: none;
-}
-
-.video-player-timeline-progress {
-	transition: width 0.34s ease-in-out;
-}
-
-.video-player-timeline-preview {
-	transition: width 220ms ease-in;
-}
-</style>
