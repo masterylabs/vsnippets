@@ -1,5 +1,5 @@
 <template>
-  <drag-and-drop-container @videoId="snippet.src = $event">
+  <drag-and-drop @videoId="snippet.src = $event">
     <video-trimmer-welcome v-if="!snippet.src">
       <video-trimmer-video-field slot="below" v-model="snippet.src" />
     </video-trimmer-welcome>
@@ -11,7 +11,7 @@
         <dev-raw :value="{ snippet }" title="Test" />
       </v-row> -->
     </v-container>
-  </drag-and-drop-container>
+  </drag-and-drop>
 </template>
 
 <script>
@@ -22,8 +22,8 @@
           src: '5S4T-uTvqPY', // 'QbYPCjO2vYg',
           // src: '',
           poster: '',
-          trimStart: 279,
-          trimEnd: 674,
+          trimStart: 5,
+          trimEnd: 15,
         },
       }
     },
@@ -31,7 +31,7 @@
     beforeMount() {
       // this.snippet.src = 'dI7yH9xa2nY'
       // this.snippet.src = 'QbYPCjO2vYg'
-      this.snippet.src = 'QbYPCjO2vYg'
+      this.snippet.src = '496981511'
       // this.snippet.src =
       //   'https://www.dropbox.com/s/kr9h38xhsawuknp/countdown.mp4?raw=1'
     },

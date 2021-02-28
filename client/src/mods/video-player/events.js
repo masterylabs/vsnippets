@@ -3,13 +3,18 @@ export default {
     console.log('ended')
   },
 
+  onFullyReady() {
+    this.unmute()
+  },
+
   onReady() {
     this.playerState = 'ready'
 
     // console.log('ready')
+
     if (this.attrs.useTrim) {
       this.onTrimReady()
-    }
+    } else this.onFullyReady()
 
     // captions
     if (this.attrs.useCaptions) this.onCaptionsReady()

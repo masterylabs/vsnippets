@@ -1,6 +1,12 @@
 export default {
   data() {
     return {
+      video: {
+        seekTo(n) {
+          this.player.currentTime = n
+        },
+      },
+
       videoOn: {
         loadedmetadata: () => {
           if (this.$refs.video) {

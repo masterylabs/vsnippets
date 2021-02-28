@@ -17,6 +17,15 @@
               <source :src="attrs.src" type="video/mp4" />
               <track v-if="videoCaptionsTrack" v-bind="videoCaptionsTrack" />
             </video>
+
+            <vue-vimeo-player
+              v-if="videoType === 'vimeo'"
+              ref="vimPlayer"
+              v-bind="vimAttrs"
+              v-on="vimOn"
+              style="position:absolute;left:0;top:0;width:100%;height:100%"
+            />
+
             <div ref="player" :id="`${playerId}_player`" />
           </template>
           <template v-else>
@@ -122,7 +131,13 @@
     </v-card>
 
     <!-- <dev-raw :value="{ playerState }" /> -->
-
+    <!-- <div
+      id="myVideo"
+      data-vimeo-id="14213714"
+      data-vimeo-width="1280"
+      data-vimeo-height="720"
+    ></div> -->
+    <!-- <div id="vimPlayer" ref="vimeoPlayer" v-on="vimOn"></div> -->
     <slot
       name="below"
       :currentTime="currentTime"

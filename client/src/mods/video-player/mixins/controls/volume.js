@@ -2,7 +2,7 @@ export default {
   data() {
     return {
       isMuted: false,
-      volume: 1,
+      playerVolume: 1,
       volumeBtnOn: {
         toggleMute: () => this.toggleMute(),
         volume: (v) => this.setVolume(v),
@@ -12,7 +12,11 @@ export default {
 
   computed: {
     volumeBtnAttrs() {
-      return { design: this.controlButtonDesign, isMuted: this.isMuted, volume: this.volume }
+      return {
+        design: this.controlButtonDesign,
+        isMuted: this.isMuted,
+        volume: this.playerVolume,
+      }
     },
   },
 
@@ -26,6 +30,7 @@ export default {
       this.isMuted = true
       this.player.muted = 1
       if (this.videoType == 'youtube') return this.ytMute()
+      if (this.videoType == 'vimeo') return this.vimMute()
       this.onMute()
     },
 
@@ -34,12 +39,14 @@ export default {
       this.player.muted = 0
       if (this.volume < 1) this.setVolume(1)
       if (this.videoType == 'youtube') return this.ytUnmute()
+      if (this.videoType == 'vimeo') return this.vimUnmute()
       this.onUnmute()
     },
 
     setVolume(n) {
-      this.volume = n
+      this.playerVolume = n
       if (this.videoType == 'youtube') return this.ytSetVolume(n)
+      if (this.videoType == 'vimeo') return this.vimSetVolume(n)
       this.player.volume = n
     },
   },

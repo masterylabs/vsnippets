@@ -6,7 +6,12 @@
 
     <video-player v-bind="video"></video-player>
 
-    <v-btn v-for="item in videos" :key="item.value" @click="setVideo(item.value)" v-text="item.text" />
+    <v-btn
+      v-for="item in videos"
+      :key="item.value"
+      @click="setVideo(item.value)"
+      v-text="item.text"
+    />
 
     <div class="mt-8">
       <dev-raw :value="video" />
@@ -19,8 +24,10 @@
     data() {
       return {
         video: {
-          src: '90mj79GqWhc',
-          poster: 'https://i.ytimg.com/vi/kYVbHh9BigU/maxresdefault.jpg',
+          src: '496981511', // '14213714', //'90mj79GqWhc',
+          // src: '90mj79GqWhc', // '14213714', //'90mj79GqWhc',
+          // src: 'https://www.dropbox.com/s/kr9h38xhsawuknp/countdown.mp4?raw=1',
+          // poster: 'https://i.ytimg.com/vi/kYVbHh9BigU/maxresdefault.jpg',
           color: '#39BF6F',
           dark: true,
         },
@@ -36,10 +43,10 @@
           // useCaptions: true, // 'on', //true,// 'always',// 'on',
           // startWithCaptions: true,
 
-          src: '90mj79GqWhc', // 'L9Cgaa8U4eY', // iceman tedtalk // bmw 'Y5_6V7E6PXA',
+          src: '14213714', // 'L9Cgaa8U4eY', // iceman tedtalk // bmw 'Y5_6V7E6PXA',
           //	'https://player.vimeo.com/external/504032931.sd.mp4?s=0831d290c54825a6edbfcae3abde39e74c5bf889&profile_id=165',
           // src: 'https://www.dropbox.com/s/kr9h38xhsawuknp/countdown.mp4?raw=1', //'Y5_6V7E6PXA', //'kYVbHh9BigU',
-          poster: 'https://i.ytimg.com/vi/kYVbHh9BigU/maxresdefault.jpg',
+          // poster: 'https://i.ytimg.com/vi/kYVbHh9BigU/maxresdefault.jpg',
           // avatarx: 'https://img.youtube.com/vi/dJuAA0zttBM/2.jpg',
           // avatarLink: '',
           // posterOnPause: false,
@@ -77,7 +84,8 @@
         videos: [
           {
             text: 'MP4',
-            value: 'https://www.dropbox.com/s/kr9h38xhsawuknp/countdown.mp4?raw=1',
+            value:
+              'https://www.dropbox.com/s/kr9h38xhsawuknp/countdown.mp4?raw=1',
           },
           {
             text: 'Mountain (yt)',

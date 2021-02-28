@@ -46,7 +46,7 @@ export default {
     onTrimReady() {
       if (this.trimStart) {
         // autoplay would be here
-        this.seekToAndPause(this.trimStart)
+        this.seekToAndPause(this.trimStart, () => this.onFullyReady)
         // this.seekToAndPause
         // this.pendingSeekedAction = 'STOP!'
         // const action = () => {
@@ -62,7 +62,7 @@ export default {
         //   }, 300)
         // })
         // this.seekTo(this.trimStart)
-      }
+      } else this.onFullyReady()
     },
   },
 }

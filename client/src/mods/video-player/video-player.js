@@ -26,6 +26,7 @@ import loadingMixin from './mixins/controls/loading'
 import trimMixin from './mixins/trim'
 import seekToAndPause from './mixins/seek-to-and-pause'
 import actionsMixin from './mixins/actions'
+import vimeoMixin from './mixins/vimeo'
 
 const mixins = [
   captionsMixin,
@@ -45,6 +46,7 @@ const mixins = [
   trimMixin,
   seekToAndPause,
   actionsMixin,
+  vimeoMixin,
 ]
 
 export default {

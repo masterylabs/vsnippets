@@ -13,6 +13,7 @@ export default {
   seekTo(n) {
     this.setTime(n)
     if (this.videoType == 'youtube') return this.ytSeekTo(n)
+    if (this.videoType == 'vimeo') return this.vimSeekTo(n)
     this.player.currentTime = n
   },
 
@@ -20,15 +21,16 @@ export default {
     if (this.playerState == 'ended') return this.playFromStart()
     this.playerState = 'play'
     if (this.videoType == 'youtube') return this.ytPlay()
+    if (this.videoType == 'vimeo') return this.vimPlay()
     this.player.play()
   },
 
   playFromStart() {
-    console.log('playFromStart')
     const n = this.trimStart ? this.trimStart : 0
     this.setTime(n)
     this.playerState = 'play'
     if (this.videoType == 'youtube') return this.ytSeekToAndPlay(n)
+    if (this.videoType == 'vimeo') return this.vimSeekToAndPlay(n)
 
     this.player.currentTime = n
     this.player.play()
@@ -37,18 +39,24 @@ export default {
   pause() {
     this.setState('pause')
     if (this.videoType == 'youtube') return this.ytPause()
+    if (this.videoType == 'vimeo') return this.vimPause()
     this.player.pause()
   },
 
   endVideo() {
     if (this.videoType == 'youtube') return this.ytEndVideo()
+    if (this.videoType == 'vimeo') return this.vimEndVideo()
     this.player.pause()
     this.setState('ended')
   },
 
   togglePlay() {
-    if (this.canPlay) return this.play()
-    this.pause()
+    if (this.canPlay) {
+      this.play()
+      this.unmute()
+    } else {
+      this.pause()
+    }
   },
 
   setTime(n) {
