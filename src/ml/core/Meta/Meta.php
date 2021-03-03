@@ -11,6 +11,7 @@ class Masteryl_Meta
     public function __construct($app_id, $args = [])
     {
         // $this->app_id = $app_id;
+        // ee($app_id, $args);
 
         $this->key_prefix = '_'.$app_id;
 
@@ -97,6 +98,7 @@ class Masteryl_Meta
     protected function setValuesObj($key, $values) {
         $def = new stdClass();
         $item = $this->get($key, $def);
+       
         foreach($values as $k => $v) {
             $item->{$k} = $v;
         }

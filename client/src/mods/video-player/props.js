@@ -141,21 +141,23 @@ export default {
 
   // // logo
   logo: {
-    type: String,
-    default: null,
+    type: Object,
+    default() {
+      return {}
+    },
   },
-  logoPos: {
-    type: String,
-    default: null,
-  },
-  logoOpacity: {
-    type: Number,
-    default: null,
-  },
-  logoHref: {
-    type: String,
-    default: null,
-  },
+  // logoPos: {
+  //   type: String,
+  //   default: null,
+  // },
+  // logoOpacity: {
+  //   type: Number,
+  //   default: null,
+  // },
+  // logoHref: {
+  //   type: String,
+  //   default: null,
+  // },
   // linkLogo: false,
   // useLogo: false,
 
@@ -183,5 +185,31 @@ export default {
   // remotes
   remotePause: Boolean,
   remotePlay: Boolean,
+  remotePlayFromStart: Boolean,
   getInfo: Boolean,
+  previewMode: Boolean,
+  alwaysShowContent: Boolean,
+  invisibleVideo: Boolean,
+  rounded: {
+    type: [String, Boolean],
+    default: null,
+  },
+  centerPlayRounded: {
+    type: [String, Boolean],
+    default: null,
+  },
+
+  pauseBanner: {
+    type: Object,
+    default() {
+      return {}
+    },
+  },
+
+  promoAlert: {
+    type: Object,
+    default() {
+      return {}
+    },
+  },
 }

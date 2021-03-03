@@ -4,9 +4,13 @@
     :class="`video-player-wrap video-player--${getPlayerState}`"
     :style="wrapStyle"
   >
-    <v-card v-if="src" @mousemove="onMousemove">
+    <v-card @mousemove="onMousemove" tile>
       <v-responsive :aspect-ratio="aspectRatio" :style="wrapStyle">
-        <div ref="container" class="video-player-video-container">
+        <div
+          ref="container"
+          class="video-player-video-container"
+          :style="invisibleVideo ? 'opacity:0' : ''"
+        >
           <template v-if="isValidVideo">
             <video
               v-if="videoType == 'file'"
@@ -23,7 +27,7 @@
               ref="vimPlayer"
               v-bind="vimAttrs"
               v-on="vimOn"
-              style="position:absolute;left:0;top:0;width:100%;height:100%"
+              class="video-player-vim"
             />
 
             <div ref="player" :id="`${playerId}_player`" />
@@ -42,16 +46,40 @@
               </v-row>
             </slot>
           </template>
+
+          <div class="video-player-content"><slot name="content" /></div>
         </div>
 
         <video-player-mask v-on="maskOn" />
 
         <video-player-poster v-if="attrs.poster" v-bind="posterAttrs" />
 
+        <video-player-end-poster
+          v-if="showEndPoster"
+          v-bind="endPosterAttrs"
+          v-on="endPosterOn"
+        />
+
+        <video-player-pause-banner
+          v-if="showPauseBanner"
+          v-bind="pauseBannerAttrs"
+          v-on="pauseBannerOn"
+        />
+        <video-player-logo
+          v-bind="logo"
+          @click="pause"
+          :controls="showControls"
+        />
+        <video-player-promo-alert
+          v-if="showPromoAlert"
+          v-bind="promoAlertAttrs"
+          v-on="promoAlertOn"
+        />
+
         <!-- CONTROLS -->
-        <v-expand-transition v-if="isValidVideo">
+        <v-expand-transition v-if="isValidVideo || previewMode">
           <video-player-controls
-            v-if="isOver || isOverControls || attrs.lockControls"
+            v-if="showControls"
             v-bind="controlsAttrs"
             v-on="controlsOn"
             @mouseenter="onMouseenterControls"
@@ -98,7 +126,7 @@
 
         <!-- CENTER PLAY -->
         <video-player-center-play
-          v-if="canPlay && !attrs.noCenterPlay"
+          v-if="canPlay && !attrs.noCenterPlay && !endPosterNoControls"
           v-bind="centerPlayAttrs"
           v-on="centerPlayOn"
         />

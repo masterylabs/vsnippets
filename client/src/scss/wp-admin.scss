@@ -1,36 +1,58 @@
 div.notice {
-	display: none;
+  display: none;
 }
 #wpcontent,
 #wpfooter {
-	margin-left: 140px;
+  margin-left: 140px;
 }
 body,
 #wpbody-content {
-	background: #ffffff !important;
+  background: #ffffff !important;
 }
 #adminmenuwrap {
-	z-index: 200 !important;
+  z-index: 200 !important;
 }
 #wpadminbar {
-	z-index: 201;
+  z-index: 201;
 }
 #wpfooter,
 .update-nag {
-	display: none;
+  display: none;
 }
 
 @media only screen and (max-width: 960px) {
-	.auto-fold #wpcontent,
-	.auto-fold #wpfooter {
-		margin-left: 16px;
-	}
+  .auto-fold #wpcontent,
+  .auto-fold #wpfooter {
+    margin-left: 16px;
+  }
 }
 
 @media only screen and (max-width: 782px) {
-	.auto-fold #wpcontent,
-	.auto-fold #wpfooter {
-		margin-left: 0px;
-		padding-left: 0px;
-	}
+  .auto-fold #wpcontent,
+  .auto-fold #wpfooter {
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+}
+
+.v-application--wrap {
+  input[type='color'],
+  input[type='date'],
+  input[type='datetime-local'],
+  input[type='datetime'],
+  input[type='email'],
+  input[type='month'],
+  input[type='number'],
+  input[type='password'],
+  input[type='search'],
+  input[type='tel'],
+  input[type='text'],
+  input[type='time'],
+  input[type='url'],
+  input[type='week'],
+  select,
+  textarea {
+    box-shadow: none !important;
+    border: none !important;
+  }
 }

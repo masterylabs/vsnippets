@@ -11,4 +11,5 @@ return [
     'url_prefix' => 'vsnippets',
     'admin_capability' => 'administrator',
     'key_name' => '',
+    'shortcode_key' => 'vsnippets'
 ];

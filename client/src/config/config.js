@@ -20,3 +20,9 @@ const getBaseUrl = (url) => {
 if (config.route) config.baseUrl = getBaseUrl(config.route)
 
 export default config
+
+export const textFieldAttrs = {
+  outlined: true,
+  hideDetails: true,
+  class: 'mb-5',
+}

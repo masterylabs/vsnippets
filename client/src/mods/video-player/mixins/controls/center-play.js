@@ -14,15 +14,15 @@ export default {
         ...this.attrs.centerPlay,
       }
 
-      if (!attrs.color) {
-        attrs.color = this.attrs.color
-      }
+      if (!attrs.color) attrs.color = this.attrs.color
+      if (this.attrs.centerPlayRounded)
+        attrs.rounded = this.attrs.centerPlayRounded
 
-      if (typeof attrs.dark != 'boolean') {
-        attrs.dark = this.attrs.dark
-      }
+      if (typeof attrs.dark != 'boolean') attrs.dark = this.attrs.dark
 
       attrs.ended = this.playerState == 'ended'
+
+      // attrs.rounded = 'pill'
 
       return attrs
     },

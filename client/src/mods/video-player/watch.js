@@ -8,4 +8,7 @@ export default {
   remotePlay() {
     this.play()
   },
+  remotePlayFromStart() {
+    this.playFromStart()
+  },
 }

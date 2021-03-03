@@ -13,37 +13,41 @@ import { loadComponents } from '@/helpers/loaders'
 //export default App
 
 export default {
-	install(Vue, options) {
-		// Register vuex mods
-		options.store.registerModule('app', vuex)
-		options.store.registerModule('msg', msg)
-		options.store.registerModule('settings', settings)
+  install(Vue, options) {
+    // Register vuex mods
+    options.store.registerModule('app', vuex)
+    options.store.registerModule('msg', msg)
+    options.store.registerModule('settings', settings)
 
-		// components
-		loadComponents(Vue, require.context('./components', true, /\.vue$/i), 'ml')
+    // components
+    loadComponents(Vue, require.context('./components', true, /\.vue$/i), 'ml')
 
-		const apiEndpoint = options.route ? `${options.route}/api` : options.api ? options.api : ''
-		const authToken = options.authToken || options.token || ''
+    const apiEndpoint = options.route
+      ? `${options.route}/api`
+      : options.api
+      ? options.api
+      : ''
+    const authToken = options.authToken || options.token || ''
 
-		const cashBuster = options.apiCashBuster ? options.apiCashBuster : false
+    const cashBuster = options.apiCashBuster ? options.apiCashBuster : false
 
-		options.api = new Api(apiEndpoint, { authToken, cashBuster })
+    options.api = new Api(apiEndpoint, { authToken, cashBuster })
 
-		const app = new Ml(options.appId, options)
+    const app = new Ml(options.appId, options)
 
-		Vue.prototype.$app = app
+    Vue.prototype.$app = app
 
-		/**
-		 * Modules
-		 */
+    /**
+     * Modules
+     */
 
-		if (options.modules) {
-			options.modules.forEach((mod) => {
-				if (mod.vuex) options.store.registerModule(mod.name, mod.vuex)
-				const prefix = toCamel(mod.name, true)
-				if (mod.context) loadComponents(Vue, mod.context, prefix)
-				// add module to app if needed
-			})
-		}
-	},
+    if (options.modules) {
+      options.modules.forEach((mod) => {
+        if (mod.vuex) options.store.registerModule(mod.name, mod.vuex)
+        const prefix = toCamel(mod.name, true)
+        if (mod.context) loadComponents(Vue, mod.context, prefix)
+        // add module to app if needed
+      })
+    }
+  },
 }

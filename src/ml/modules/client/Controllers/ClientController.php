@@ -55,6 +55,11 @@ class Masteryl_ClientController
       $data['isBrandClient'] = $brand->isClient($this->user_id);
     }
 
+    // Additianal contnet
+    $data['player_branding'] = new Masteryl_PlayerBranding(true);
+    $data['pause_banner'] = new Masteryl_PauseBanner(true);
+    $data['promo_alert'] = new Masteryl_PromoAlert(true);
+    $data['end_poster'] = new Masteryl_EndPoster(true);
     
     return $res->json($data);
   }

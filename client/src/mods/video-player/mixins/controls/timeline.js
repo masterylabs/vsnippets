@@ -46,6 +46,7 @@ export default {
 
   methods: {
     onTimelineClick(n) {
+      // if (!this.duration) return
       if (this.trimStart) n = n + this.trimStart
       this.seekTo(n)
     },

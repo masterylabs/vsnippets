@@ -35,8 +35,10 @@ const modules = [
   VideoPlayer,
 ]
 
+const mapModules = ['marketing', 'player_branding']
+
 import dev from './plugins/dev'
-console.log('dev plugin')
+// console.log('dev plugin')
 Vue.use(dev)
 
 // plugins
@@ -48,7 +50,7 @@ Vue.use(VueClipboard)
 Vue.use(views)
 Vue.use(comps)
 Vue.use(layouts)
-Vue.use(ml, { store, ...config, modules, config })
+Vue.use(ml, { store, ...config, modules, config, mapModules })
 
 Vue.config.productionTip = false
 

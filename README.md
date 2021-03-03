@@ -42,3 +42,5 @@ https://youtu.be/gkZEhCeeXkI
 - client layouts
 
 ## Changes to core
+
+-- added MetaModel with support for nested objects

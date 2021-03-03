@@ -1,9 +1,9 @@
-import config from '@/config/config'
+// import config from '@/config/config'
 export default {
-  src: 'plJe0uDszaY',
+  src: '', // plJe0uDszaY
   poster: '',
 
-  color: config.colors.primary, // '#39BF6F',
+  color: '#3A3A3A', // config.colors.primary, // '#39BF6F',
   dark: true,
 
   // use options
@@ -30,7 +30,9 @@ export default {
   // always one up
   noControls: false,
 
-  lockControls: true,
+  lockControls: false,
+  rounded: '',
+  centerPlayRounded: '',
   controls: {
     align: 'end', // move timeline to end
     // iconColor: 'yellow',
@@ -126,8 +128,8 @@ export default {
   // useLogo: false,
 
   // // avatar
-  // avatar: '',
-  // avatarHref: '',
+  avatar: '',
+  avatarHref: '',
 
   // // share
   // useShare: false,

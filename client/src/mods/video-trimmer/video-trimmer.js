@@ -3,8 +3,9 @@ import events from './events'
 import methods from './methods'
 
 import timelineMixin from './mixins/timeline'
+import resizeMixin from '../../mixins/on-resize'
 
-const mixins = [timelineMixin]
+const mixins = [timelineMixin, resizeMixin]
 
 export default {
   props,

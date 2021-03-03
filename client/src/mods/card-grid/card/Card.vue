@@ -139,7 +139,7 @@
       async copyUrl() {
         const url = this.getUrl(this.item.slug)
         await this.$copyText(url)
-        this.$app.success('Url to Clipboard!')
+        this.$app.success('Copied to Clipboard!')
       },
     },
   }

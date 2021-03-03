@@ -3,6 +3,7 @@ import uuid from 'uuid'
 import config from './config/config'
 import { deepMerge } from './helpers/helpers'
 import { isValidVideo } from '@/helpers/video'
+import isDark from '@/helpers/is-dark'
 
 import props from './props'
 import watch from './watch'
@@ -27,6 +28,9 @@ import trimMixin from './mixins/trim'
 import seekToAndPause from './mixins/seek-to-and-pause'
 import actionsMixin from './mixins/actions'
 import vimeoMixin from './mixins/vimeo'
+import pauseBannerMixin from './pause-banner/pause-banner'
+import promoAlertMixin from './promo-alert/promo-alert'
+import endPosterMixin from './end-poster/end-poster'
 
 const mixins = [
   captionsMixin,
@@ -47,6 +51,9 @@ const mixins = [
   seekToAndPause,
   actionsMixin,
   vimeoMixin,
+  pauseBannerMixin,
+  promoAlertMixin,
+  endPosterMixin,
 ]
 
 export default {
@@ -71,11 +78,15 @@ export default {
       const propValue = {}
       for (k in config) if (this[k] != null) propValue[k] = this[k]
 
+      // automate is dark
+      if (propValue.color) propValue.dark = isDark(propValue.color)
+
       return deepMerge(config, propValue)
     },
 
     videoType() {
       const src = this.attrs.src
+      // console.log('src', src)
       return !src
         ? ''
         : !isNaN(src)
@@ -83,6 +94,11 @@ export default {
         : src.length == 11
         ? 'youtube'
         : 'file'
+    },
+
+    showControls() {
+      if (this.endPosterNoControls) return false
+      return this.isOver || this.isOverControls || this.attrs.lockControls
     },
 
     isValidVideo() {

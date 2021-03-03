@@ -4,7 +4,7 @@
       Video Player Test
     </div>
 
-    <video-player v-bind="video"></video-player>
+    <video-player v-bind="video" preview-mode></video-player>
 
     <v-btn
       v-for="item in videos"
@@ -24,8 +24,8 @@
     data() {
       return {
         video: {
-          src: '496981511', // '14213714', //'90mj79GqWhc',
-          // src: '90mj79GqWhc', // '14213714', //'90mj79GqWhc',
+          // src: '496981511', // '14213714', //'90mj79GqWhc',
+          src: '', // '14213714', //'90mj79GqWhc',
           // src: 'https://www.dropbox.com/s/kr9h38xhsawuknp/countdown.mp4?raw=1',
           // poster: 'https://i.ytimg.com/vi/kYVbHh9BigU/maxresdefault.jpg',
           color: '#39BF6F',

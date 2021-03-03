@@ -7,7 +7,10 @@
       get-info
       @info="onInfo"
     >
-      <template v-slot:below="{ currentTime, duration, isValidVideo }">
+      <template
+        v-if="!resizing"
+        v-slot:below="{ currentTime, duration, isValidVideo }"
+      >
         <v-fade-transition>
           <video-trimmer-timeline
             v-if="duration"
@@ -24,12 +27,8 @@
           striped
           indeterminate
           height="60"
-          color="yellow lighten-4"
+          color="grey lighten-3"
         />
-        <!-- <dev-raw
-          :value="{ currentTime, duration, isValidVideo, value }"
-          title="VideoTrimmer"
-        /> -->
       </template>
     </video-player>
     <slot name="below" />

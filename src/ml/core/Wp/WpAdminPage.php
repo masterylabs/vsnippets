@@ -134,16 +134,16 @@ class Masteryl_WpAdminPage
     {
         // remove styles
         if (!empty($this->vue) || $this->clear_wp_styles) {
-            wp_deregister_style('buttons');
-            wp_enqueue_style('nav-menus');
-            wp_enqueue_style('wp-pointer');
-            wp_enqueue_style('widgets');
-            wp_enqueue_style('site-icon');
-            wp_enqueue_style('dashicons');
-            wp_enqueue_style('admin-menu');
-            wp_enqueue_style('common');
-            wp_enqueue_style('dashboard');
-            wp_enqueue_style('themes');
+            // wp_deregister_style('buttons');
+            // wp_enqueue_style('nav-menus');
+            // wp_enqueue_style('wp-pointer');
+            // wp_enqueue_style('widgets');
+            // wp_enqueue_style('site-icon');
+            // wp_enqueue_style('dashicons');
+            // wp_enqueue_style('admin-menu');
+            // wp_enqueue_style('common');
+            // wp_enqueue_style('dashboard');
+            // wp_enqueue_style('themes');
         }
 
         if ($this->use_wp_media) {

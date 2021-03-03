@@ -7,7 +7,7 @@
   >
     <v-btn
       :large="large"
-      :height="height"
+      :height="rounded == 'circle' ? width : height"
       :width="width"
       :x-large="xLarge"
       :color="color"
@@ -15,6 +15,7 @@
       :fab="fab"
       :icon="icon"
       :tile="tile"
+      :class="`rounded-${rounded}`"
       @click="$emit('click')"
     >
       <v-icon :size="size" v-text="ended ? 'mdi-replay' : 'mdi-play'" />
@@ -33,6 +34,10 @@
       icon: Boolean,
       tile: Boolean,
       ended: Boolean,
+      rounded: {
+        type: String,
+        default: '',
+      },
       size: {
         type: [Number, String],
         default: 40,

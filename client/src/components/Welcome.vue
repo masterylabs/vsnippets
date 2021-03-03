@@ -1,11 +1,12 @@
 <template>
   <v-row align="center" justify="center">
     <div class="text-center" :style="isOver ? 'pointer-events:none' : ''">
-      <m-logo size="100" :color="isOver ? 'success' : 'logo'" />
+      <m-logo
+        large
+        :color="isOver ? 'success' : 'logo'"
+        :text="isOver ? 'Drop It!' : ''"
+      />
 
-      <div class="title black--text text-h3 font-weight-regular mb-2">
-        {{ isOver ? 'Drop It!' : brandTitle }}
-      </div>
       <div class="caption">Drag YouTube {{ text }} here...</div>
       <v-btn
         class="my-4"

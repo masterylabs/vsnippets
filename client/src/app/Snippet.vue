@@ -3,13 +3,14 @@
     <v-fade-transition>
       <div v-if="ready">
         <v-row no-gutters justify="end" class="mb-7">
+          <m-shortcode-btn name="vsnippets" :id="data.id" />
           <m-dialog
             persistent
             icon="pencil"
             color="primary"
             :remote-close="remoteCloseForm"
+            tooltip="Edit"
             card
-            openx
           >
             <form @submit.prevent="updateForm">
               <v-text-field v-model="data.name" label="Name" />
@@ -42,7 +43,40 @@
       </div>
     </v-fade-transition>
 
-    <!-- <v-btn x-large block class="mt-11" color="success" depressed>Publish</v-btn> -->
+    <v-btn
+      v-if="!isPublish"
+      large
+      block
+      class="mt-11 grey lighten-4 text-none font-weight-regular"
+      colorx=""
+      depressed
+      rounded
+      @click="publish"
+      >Publish</v-btn
+    >
+    <v-fade-transition>
+      <v-card v-if="isPublish" class="mt-10">
+        <v-card-text>
+          <div class="text-center ">
+            <span class="yellow lighten-4 px-1 black--text body-2">
+              To add this video snippet to your website, please use the
+              following shortcode your posts and pages.</span
+            >
+          </div>
+          <v-text-field
+            class="title ml-video-field-input--centered"
+            label="Shortcode"
+            solo
+            flat
+            rounded
+            readonly
+            autofocus
+            hide-details
+            :value="shortcode"
+          />
+        </v-card-text>
+      </v-card>
+    </v-fade-transition>
 
     <!-- <dev-raw :value="{ video }" title="Snippet" /> -->
   </v-container>
@@ -58,6 +92,7 @@
         updatingForm: false,
         remoteCloseForm: false,
         deleting: false,
+        isPublish: false,
         form,
         data: {},
         video: {}, //
@@ -75,9 +110,18 @@
       canUpdateForm() {
         return true
       },
+      shortcode() {
+        return `[snippets id="${this.data.id}"]`
+      },
     },
 
     methods: {
+      publish() {
+        if (this.hasChanges) this.saveVideo()
+        this.copyShortcode()
+        this.isPublish = true
+      },
+
       onVideoTitle(title) {
         if (!this.data.name) {
           this.data.name = title
@@ -103,6 +147,8 @@
           return
 
         this.updatingForm = true
+
+        if (this.data.image) this.video.poster = this.data.image
 
         const content = JSON.stringify(this.video)
 
@@ -141,6 +187,12 @@
 
         this.videoStr = content
         this.loading = false
+      },
+
+      copyShortcode() {
+        this.$copyText(this.shortcode).then(() => {
+          this.$app.success('Copied to Clipboard!')
+        })
       },
     },
 
