@@ -31,7 +31,7 @@ const getters = {
   validLicense(state) {
     return state.license &&
       typeof state.license == 'object' &&
-      state.license.valid
+      state.license.value // locked in error
       ? state.license
       : false
   },
@@ -100,7 +100,6 @@ const mutations = {
 
 const actions = {
   setProp({ commit }, { key, value }) {
-    // console.log('setProp', key)
     commit('SET_PROP', { key, value })
   },
 

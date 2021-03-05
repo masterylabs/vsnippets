@@ -7,7 +7,8 @@ class Masteryl_PromoAlert extends Masteryl_MetaModel
 
   protected $fields = [
     'active' => false,
-    'dismissible' => false,
+    // 'dismissible' => true,
+    'noClose' => false,
     'dense' => false,
     'useBtn' => false,
     'noIcon' => false,
@@ -16,6 +17,7 @@ class Masteryl_PromoAlert extends Masteryl_MetaModel
     'href' => '',
     'btnText' => '',
     'btnColor' => '#F44336FF',
+    'showTime' => 0,
   ];
 
 

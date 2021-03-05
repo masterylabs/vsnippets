@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <video-player v-if="ready" v-bind="video" />
-    <dev-raw :value="{ video }" />
+    <!-- <dev-raw :value="{ video }" /> -->
   </v-app>
 </template>
 
@@ -26,7 +26,7 @@
       const response = await this.$app.get(this.endpoint)
 
       if (!response || !response.data) {
-        return console.log('NOT AVAILABLE')
+        return
       }
 
       let video = response.data

@@ -9,7 +9,7 @@
           lock-controls
           class="mb-8"
         >
-          <template v-slot:content>
+          <!-- <template v-slot:content>
             <v-card
               width="100%"
               height="100%"
@@ -18,7 +18,7 @@
               invisible-video
             >
             </v-card>
-          </template>
+          </template> -->
         </video-player>
 
         <v-card>

@@ -1,22 +1,20 @@
 // getGif
-const getGifUrl = (dataTransfer, no = false) => {
-  let html = dataTransfer.getData('text/html')
+// const getGifUrl = (dataTransfer, no = false) => {
+//   let html = dataTransfer.getData('text/html')
 
-  if (!html) return no
+//   if (!html) return no
 
-  if (html.indexOf('id="mouseover-overlay"') > -1) {
-    html = html.split('id="mouseover-overlay"')[1]
-  }
+//   if (html.indexOf('id="mouseover-overlay"') > -1) {
+//     html = html.split('id="mouseover-overlay"')[1]
+//   }
 
-  const regex = /(?<=src=").*?(?=")/
-  let src = html.match(regex)[0]
+//   const regex = /(?<=src=").*?(?=")/
+//   let src = html.match(regex)[0]
 
-  console.log('getGifUrl', src)
+//   if (!src || src.indexOf('://') < 0) return no
 
-  if (!src || src.indexOf('://') < 0) return no
-
-  return src.replace(/&amp;/g, '&')
-}
+//   return src.replace(/&amp;/g, '&')
+// }
 
 const getYtId = (v, def = false) => {
   if (v.length === 11 && v.indexOf('.') < 0) {
@@ -33,10 +31,9 @@ const getYtId = (v, def = false) => {
 
 const getStudioInfo = (dataTransfer) => {
   const url = dataTransfer.getData('URL')
-  console.log('studio', url)
+
   const [, a] = url.split('/video/')
   const [videoId] = a.split('/')
-  console.log('videoId', videoId)
 
   return {
     gif: false,
@@ -53,9 +50,9 @@ export const getThumbInfo = (dataTransfer, no = false) => {
     return getStudioInfo(dataTransfer)
   }
 
-  const gif = getGifUrl(dataTransfer)
+  // const gif = getGifUrl(dataTransfer)
   const thumb = {
-    gif,
+    // gif,
     videoUrl, // dataTransfer.getData('URL'),
   }
 
@@ -66,16 +63,13 @@ export const getThumbInfo = (dataTransfer, no = false) => {
 
 export const loadImage = (url) => {
   return new Promise((resolve, reject) => {
-    console.log('check', url)
     const image = new Image()
 
     const onSuccess = () => {
-      console.log('good', image.width)
       resolve({ width: image.width, height: image.height })
     }
 
     const onFail = (e) => {
-      console.log('FAIL', url)
       reject()
     }
 

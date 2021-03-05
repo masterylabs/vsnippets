@@ -71,7 +71,7 @@ const devStart = function(values = false) {
 }
 
 const stop = function() {
-  // console.log('stop app')
+  //
 }
 
 const updateLicense = function(form) {

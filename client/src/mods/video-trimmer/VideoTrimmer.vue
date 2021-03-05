@@ -5,7 +5,9 @@
       v-bind="value"
       :remote-seek-to-and-pause="seekToAndPause"
       get-info
+      lockControls
       @info="onInfo"
+      @ready="$emit('ready', $event)"
     >
       <template
         v-if="!resizing"

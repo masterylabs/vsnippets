@@ -7,6 +7,7 @@ class Masteryl_VideoController
   protected $meta_fields = [
     'player_branding', 'pause_banner', 'promo_alert', 'end_poster'
   ];
+  
 
     public function api($req, $res) 
     {
@@ -16,21 +17,47 @@ class Masteryl_VideoController
 
       if(!$video || empty($video->content)) return $res->error();
 
-      $response = [
-        'data' => json_decode($video->content),
+      $data = json_decode($video->content);
+
+      $pb = new Masteryl_PlayerBranding(true);
+      if($pb->active) $data = masteryl_object_merge($data, $pb);
+      
+      $item = new Masteryl_PauseBanner(true);
+      if($item->active) $data->pauseBanner = $item;
+
+      $item = new Masteryl_PromoAlert(true);
+      if($item->active) $data->promoAlert = $item;
+
+      $item = new Masteryl_EndPoster(true);
+      if($item->active) $data->endPoster = $item;
+
+      return $res->data($data);
+    }
+
+    public function web($req, $res) {
+
+      $video = Masteryl_Video::where('identifier', "vide_{$req->video}")->first();
+
+      $app = $req->getApp();
+
+      $data = [
+        'route' => $app->base_route,
+        'video' => $req->video
       ];
+  
+      $vue =  new Masteryl_Vue('client/live', $data);
+  
+      $args = [
+        'title' => $video->name,
+        'head' => $vue->getHead(true),
+        'body' => $vue->getBody()
+    ];
 
-      $meta = $req->getApp()->meta();
-      $metaValue = [];
-
-      foreach($this->meta_fields as $i) {
-        $value = $meta->get($i, false);
-        if($value) $metaValue[$i] = $value;
-      }
-
-      if(!empty($metaValue)) $response['meta'] = $metaValue;
-
-      return $res->json($response);
+    foreach($video as $key => $value) {
+      $args[$key] = $value;
+    }
+  
+    return $res->view('live', $args);
     }
 
     

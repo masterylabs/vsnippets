@@ -3,11 +3,14 @@
     <view-app-no-auth v-if="app.noAuth" />
     <view-loading v-else-if="!app.ready" />
     <view-upgrade v-else-if="app.expired" />
-    <view-welcome v-else-if="!app.license" />
+    <view-welcome v-else-if="!validLicense" />
     <router-view v-else />
     <!-- <m-test /> -->
     <!-- <video-player-test /> -->
     <!-- <video-trimmer-test /> -->
+    <!-- <template v-slot:bottom>
+      <ml-license-btn v-if="canUse" fixed bottom right fab />
+    </template> -->
   </app-layout>
 </template>
 
@@ -22,15 +25,16 @@
       ...mapGetters({
         // hasAddon: 'app/hasAddon',
         isBrandClient: 'app/isBrandClient',
+        validLicense: 'app/validLicense',
       }),
-      canUse() {
-        return (
-          this.app.ready &&
-          this.app.license &&
-          !this.app.expired &&
-          !this.isBrandClient
-        )
-      },
+      // canUse() {
+      //   return (
+      //     this.app.ready &&
+      //     this.validLicense &&
+      //     !this.app.expired &&
+      //     !this.isBrandClient
+      //   )
+      // },
       showToolbar() {
         return this.app.ready
       },

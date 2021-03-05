@@ -3,7 +3,7 @@
     <v-container
       fluid
       class="mb-8"
-      :class="hasItems ? 'elevation-2 grey lighten-4 pt-8' : ''"
+      :class="hasItems ? 'elevation-2x grey lighten-4 pt-8' : ''"
     >
       <v-row>
         <m-welcome>
@@ -87,7 +87,6 @@
 
     methods: {
       onDrop({ video }) {
-        console.log('onDrop video', video)
         if (!video.videoId) return this.$app.error('Invalid Drop')
 
         const form = {
@@ -120,8 +119,6 @@
         if (form.image) snippet.poster = form.image
 
         form.content = JSON.stringify(snippet)
-
-        console.log('create form', form)
 
         const { data } = await this.$app.post('videos', form)
 

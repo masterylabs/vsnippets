@@ -70,6 +70,7 @@ class Masteryl_MetaModel
 
   public function save()
   {
+    if(method_exists($this, 'onSave')) $this->onSave();
     
     $values = [];
 
@@ -99,8 +100,6 @@ class Masteryl_MetaModel
       $fields = json_decode($fields, true);
       $fields = array_merge($this->fields, $fields);
     }
-
-    
     
     foreach($fields as $key => $val) {
       $this->{$key} = $val;

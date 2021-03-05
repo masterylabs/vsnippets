@@ -212,4 +212,10 @@ export default {
       return {}
     },
   },
+
+  isAdmin: Boolean,
+  adminView: {
+    type: String,
+    default: '',
+  },
 }

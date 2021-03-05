@@ -16,7 +16,6 @@ export default {
   },
 
   getPlayerState: function(n) {
-    // console.log({ n })
     switch (n) {
       case -1:
         return 'unstarted'

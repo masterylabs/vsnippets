@@ -13,13 +13,12 @@ $app->module('user-auth');
 // Client
 $middleware = [['module' => 'user-auth', 'name' => 'user-auth']];
 $app->module('client', compact('middleware'));
-// $app->module('client');
-// Settings
-// $app->module('settings');
+
 
 // Optionals
 $app->module('vue');
-$app->module('admin-page', ['vue' => 'client/index', 'auth' => 'user-auth', 'use_wp_media' => true]); 
+$app->module('admin-page');
+
 $app->module('shortcode');
 
 // Routes

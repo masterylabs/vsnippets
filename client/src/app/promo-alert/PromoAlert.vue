@@ -62,6 +62,7 @@
           </v-row>
         </v-col>
       </v-row>
+      <m-hms-field v-model="item.showTime" />
 
       <v-btn
         color="primary"
@@ -89,14 +90,18 @@
         isBtnColor: false,
         dataStr: '',
         options: [
-          {
-            text: 'Can Close',
-            value: 'dismissible',
-          },
-          {
-            text: 'Dense',
-            value: 'dense',
-          },
+          // {
+          //   text: 'Can Close',
+          //   value: 'dismissible',
+          // },
+          // {
+          //   text: 'Dense',
+          //   value: 'dense',
+          // },
+          // {
+          //   text: 'Agressive',
+          //   value: 'agressive',
+          // },
           {
             text: 'CTA Button',
             value: 'useBtn',
@@ -104,6 +109,10 @@
           {
             text: 'No Icon',
             value: 'noIcon',
+          },
+          {
+            text: 'No Close',
+            value: 'noClose',
           },
         ],
       }

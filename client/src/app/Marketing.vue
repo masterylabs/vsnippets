@@ -24,13 +24,15 @@
   import pauseBanner from './pause-banner/PauseBanner'
   import promoAlert from './promo-alert/PromoAlert'
   import endPoster from './end-poster/EndPoster'
-
+  import brandMixin from '@/mixins/brand'
   export default {
     components: {
       pauseBanner,
       promoAlert,
       endPoster,
     },
+
+    mixins: [brandMixin],
 
     data() {
       return {
@@ -55,6 +57,10 @@
           },
         ],
       }
+    },
+
+    beforeMount() {
+      if (!this.hasMarketing) this.$router.replace({ name: 'home' })
     },
   }
 </script>

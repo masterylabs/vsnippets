@@ -27,7 +27,6 @@ export default {
   },
 
   ended() {
-    console.log('videoEnded')
     this.hasEnded = true
     this.playerState = 'ended'
   },

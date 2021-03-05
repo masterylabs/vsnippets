@@ -80,14 +80,5 @@
         this.loading = false
       },
     },
-
-    beforeMount() {
-      return
-      // if (!this.settingsPageAccess) return this.$router.replace({ name: 'home' })
-      // console.log('settings', this.settingsPageAccess)
-      // // console.log()
-      // // this.dataStr = this.
-      // if (this.data.unsplash_access_key) this.dataStr = this.data.unsplash_access_key
-    },
   }
 </script>

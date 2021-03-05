@@ -133,17 +133,21 @@ class Masteryl_WpAdminPage
     public function screen() 
     {
         // remove styles
-        if (!empty($this->vue) || $this->clear_wp_styles) {
-            // wp_deregister_style('buttons');
-            // wp_enqueue_style('nav-menus');
-            // wp_enqueue_style('wp-pointer');
-            // wp_enqueue_style('widgets');
-            // wp_enqueue_style('site-icon');
-            // wp_enqueue_style('dashicons');
-            // wp_enqueue_style('admin-menu');
-            // wp_enqueue_style('common');
-            // wp_enqueue_style('dashboard');
-            // wp_enqueue_style('themes');
+        // if (!empty($this->vue) || $this->clear_wp_styles) {
+        //     // wp_deregister_style('buttons');
+        //     // wp_enqueue_style('nav-menus');
+        //     // wp_enqueue_style('wp-pointer');
+        //     // wp_enqueue_style('widgets');
+        //     // wp_enqueue_style('site-icon');
+        //     // wp_enqueue_style('dashicons');
+        //     // wp_enqueue_style('admin-menu');
+        //     // wp_enqueue_style('common');
+        //     // wp_enqueue_style('dashboard');
+        //     // wp_enqueue_style('themes');
+        // }
+
+        if(file_exists(MASTERYL_PUBLIC_PATH . 'css/admin-page.css')) {
+          wp_enqueue_style($this->menu_slug.'-admin-page-css', MASTERYL_PUBLIC_URL . '/css/admin-page.css');
         }
 
         if ($this->use_wp_media) {

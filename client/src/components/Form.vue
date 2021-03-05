@@ -42,6 +42,7 @@
                 :label="field.text"
                 :rows="field.rows || 3"
                 :disabled="field.disabled ? field.disabled(val) : false"
+                :outlined="outlined"
               />
               <v-switch
                 v-else-if="field.type && field.type == 'switch'"
@@ -56,6 +57,7 @@
                 :label="field.text"
                 :disabled="field.disabled ? field.disabled(val) : false"
                 :autofocus="autofocus && index == 0 && !val[field.value]"
+                :outlined="outlined"
               />
             </div>
           </v-expand-transition>
@@ -91,6 +93,10 @@
     props: {
       autofocus: Boolean,
       remoteLoading: Boolean,
+      outlined: {
+        type: Boolean,
+        default: true,
+      },
       value: {
         type: Object,
         default() {

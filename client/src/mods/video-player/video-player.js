@@ -61,6 +61,7 @@ export default {
   mixins,
   data() {
     return {
+      windowHeight: 500,
       // isOverPlayer: false,
       isOver: false,
       isOverWait: null,
@@ -86,7 +87,7 @@ export default {
 
     videoType() {
       const src = this.attrs.src
-      // console.log('src', src)
+
       return !src
         ? ''
         : !isNaN(src)
@@ -138,9 +139,11 @@ export default {
     // },
 
     wrapStyle() {
-      const style = {}
+      const style = {
+        maxHeight: `${this.windowHeight - 0}px`,
+      }
 
-      if (this.fullscreenMaxHeight) {
+      if (this.isFullscreen) {
         style.maxHeight = `${this.fullscreenMaxHeight}px`
       }
 
@@ -161,12 +164,17 @@ export default {
     ...methods,
   },
 
-  // mounted() {
-  //   // setInterval(() => {
-  //   // }, 1000)
-  // },
+  mounted() {
+    this.onResize()
+    setTimeout(() => {
+      this.onResize()
+    }, 1000)
+
+    window.addEventListener('resize', this.onResize)
+  },
 
   beforeDestroy() {
+    window.removeEventListener('resize2', this.onResize)
     this.destroy()
   },
 }

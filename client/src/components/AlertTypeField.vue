@@ -41,7 +41,7 @@
           },
           {
             value: 'warning',
-            text: 'Warning',
+            text: 'Attention',
             // icon: 'alert-circle',
             // iconColor: 'orange',
           },

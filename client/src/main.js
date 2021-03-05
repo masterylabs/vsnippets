@@ -38,7 +38,7 @@ const modules = [
 const mapModules = ['marketing', 'player_branding']
 
 import dev from './plugins/dev'
-// console.log('dev plugin')
+
 Vue.use(dev)
 
 // plugins

@@ -27,11 +27,6 @@ class App {
   loadModuleStates = methods.loadModuleStates
 
   // setters
-  // setThemeColor = setters.setThemeColor
-  // setThemeColor = (color) => {
-  // 	console.log('setColor', color, this)
-  // }
-  // loadModule = loadModule
 
   // Setters
   setValue(key, value) {

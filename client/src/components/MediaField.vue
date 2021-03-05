@@ -36,17 +36,16 @@
           title: 'Insert a media',
           // library: {type: 'image'},
           multiple: this.multiple,
-          // button: { text: "Insert" }
         })
 
         media.on('select', () => {
-          const selection = window
+          const selection = media
             .state()
             .get('selection')
             .first()
             .toJSON()
 
-          // console.log({ selection })
+          this.model = selection.url
 
           this.$emit('input', selection.url)
         })

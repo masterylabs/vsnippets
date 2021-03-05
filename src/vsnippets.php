@@ -2,7 +2,7 @@
 /*
 Plugin Name: vSnippets
 Description: Video embed only the part you want!
-Version: 0.0.1
+Version: 1.0.0
 Author: Matthew McDonald
 Plugin URI: https://vsnippets.com
 Author URI: https://masterylabs.com
@@ -10,6 +10,6 @@ Author URI: https://masterylabs.com
 
 if (!defined('ABSPATH')) exit;
 
-define('MASTERYL_WP_PLUGIN_FILE', __FILE__);
+if(!defined('MASTERYL_WP_PLUGIN_FILE')) define('MASTERYL_WP_PLUGIN_FILE', __FILE__);
 
-require __DIR__ . '/bootstrap/wp.php';
+require_once __DIR__ . '/bootstrap/wp.php';

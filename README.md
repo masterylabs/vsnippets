@@ -40,7 +40,12 @@ https://youtu.be/gkZEhCeeXkI
 - install client and fix lint errors
 - mods
 - client layouts
+- client test in wp admin
 
 ## Changes to core
 
 -- added MetaModel with support for nested objects
+-- add helper function masteryl_object_merge
+-- client license defaults to empty object, changes validLicense sate, and App.vue
+-- fixed MediaField.vue in client
+-- core vsnippet.php file

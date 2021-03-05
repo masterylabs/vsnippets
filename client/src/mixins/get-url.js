@@ -9,6 +9,7 @@ export default {
 
   methods: {
     getUrl(slug = '') {
+      slug = slug.replace(/vide_/, '')
       if (this.settings.url_prefix)
         return `${this.$app.config.baseUrl}/${this.settings.url_prefix}/${slug}`
 

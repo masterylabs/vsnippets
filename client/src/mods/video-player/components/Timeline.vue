@@ -172,7 +172,7 @@
         // const progress = this.currentTime / this.duration
         // const value = progress * 100
         // const width = Math.floor(width)
-        // console.log({ progress, value, width })
+
         return Math.floor((this.currentTime / this.duration) * 100)
       },
       previewValue() {
@@ -226,9 +226,6 @@
     mounted() {
       document.addEventListener('mouseup', this.onMouseup)
 
-      setInterval(() => {
-        // console.log('currentTime', this.currentTime)
-      }, 1500)
       this.isMounted = true
     },
     filters: {

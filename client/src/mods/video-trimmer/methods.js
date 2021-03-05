@@ -1,7 +1,6 @@
 export default {
   loadVideo() {
-    // console.log('load video', id);
-    // console.log('plyr', Plyr);
+    //
   },
 
   startSlideL() {
@@ -84,9 +83,6 @@ export default {
 
   endSlide() {
     this.sliding = false
-    // this.handle.startLeft = this.handle.left;
-    // this.handle.startX = this.clientX;
-    console.log('end slide')
   },
 
   endSlideL() {
@@ -95,9 +91,5 @@ export default {
 
   endSlideR() {
     this.slidingR = false
-
-    // this.handle.startWidth = 0;
-    // this.handle.startLeft = 0;
-    // this.handle.startX = 0;
   },
 }

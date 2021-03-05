@@ -241,3 +241,8 @@ function masteryl_camelize($i, $sep = '_')
     $i = str_replace('-', $sep, $i);
     return str_replace($sep, '', ucwords($i, $sep));
  }
+
+
+ function masteryl_object_merge($a, $b) {
+  return (object) array_merge((array) $a, (array) $b);
+}

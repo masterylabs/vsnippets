@@ -32,7 +32,7 @@ class Masteryl_ClientController
       ]
     ];
 
-    $license = $this->app->meta()->getEncrypt('license', $this->secret_key);
+    $license = $this->app->meta()->getEncrypt('license', $this->secret_key, (object) []);
    
     if(!empty($license) && !empty($license->expire_ts)) {
       $license->expires_in = (int) $license->expire_ts - time();

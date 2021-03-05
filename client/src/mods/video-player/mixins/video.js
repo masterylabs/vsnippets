@@ -41,9 +41,7 @@ export default {
         timeupdate: () => {
           this.setTime(this.player.currentTime)
         },
-        error: () => {
-          console.log('error')
-        },
+        error: () => {},
         // stalled: () => {
         // },
         // suspend: () => {

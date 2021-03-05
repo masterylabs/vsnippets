@@ -57,5 +57,8 @@
 
 .video-player-logo {
   position: absolute;
-  z-index: 1250000;
+  z-index: 100;
+}
+.video-player-promo-alert {
+  z-index: 200;
 }

@@ -14,7 +14,7 @@ export default {
     showPauseBanner() {
       if (this.pauseBanner.showOnReady && this.playerState == 'ready')
         return true
-      if (['pause', 'paused'].includes(this.playerState)) return true
+      if (['pause', 'paused', 'play'].includes(this.playerState)) return true
       return false
     },
   },

@@ -1,6 +1,6 @@
 export default {
   onEnded() {
-    console.log('ended')
+    //
   },
 
   onFullyReady() {
@@ -10,14 +10,14 @@ export default {
   onReady() {
     this.playerState = 'ready'
 
-    // console.log('ready')
-
     if (this.attrs.useTrim) {
       this.onTrimReady()
     } else this.onFullyReady()
 
     // captions
     if (this.attrs.useCaptions) this.onCaptionsReady()
+
+    this.$emit('ready', this.duration)
   },
 
   onMute() {
@@ -42,5 +42,9 @@ export default {
     this.isOverWait = setTimeout(() => {
       this.isOver = false
     }, wait)
+  },
+
+  onResize() {
+    this.windowHeight = document.documentElement.clientHeight
   },
 }

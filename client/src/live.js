@@ -12,7 +12,7 @@ import VideoPlayer from './mods/video-player'
 const modules = [VideoPlayer]
 
 import dev from './plugins/dev'
-console.log('dev plugin')
+
 Vue.use(dev)
 
 // plugins

@@ -70,10 +70,12 @@
           @click="pause"
           :controls="showControls"
         />
+
         <video-player-promo-alert
           v-if="showPromoAlert"
           v-bind="promoAlertAttrs"
           v-on="promoAlertOn"
+          style="z-index:10000"
         />
 
         <!-- CONTROLS -->

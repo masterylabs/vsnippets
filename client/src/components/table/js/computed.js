@@ -106,8 +106,6 @@ export default {
 
     const ignoreFields = ['id', 'identifier', 'created', 'updated']
 
-    // console.log(this.data && this.data.headers ? true : false)
-
     // return form
 
     if (this.data && this.data.headers) {

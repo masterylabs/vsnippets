@@ -37,6 +37,6 @@ export default {
     this.getItems(n)
   },
   onPageCount(e) {
-    console.log('onPageCount', e)
+    //
   },
 }

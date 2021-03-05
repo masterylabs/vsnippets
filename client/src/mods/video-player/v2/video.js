@@ -46,31 +46,29 @@ export default {
 
   methods: {
     onVideoReady() {
-      console.log('video ready , se duration', this.$refs.video.duration)
       this.setDuration(this.$refs.video.duration)
       this.ready()
-      // this.video.ready = true
     },
     onVideoPause() {
-      console.log('onVideoPause')
+      //
     },
     onVideoPlay() {
-      console.log('onVideoPlay')
+      //
     },
     onVideoPlaying(n) {
-      console.log('onVideoPlaying', n)
+      //
     },
     onVideoSeeked() {
-      console.log('onVideoSeeked')
+      //
     },
     onVideoProgress() {
-      console.log('onVideoProgress')
+      //
     },
     onVideoRateChange() {
-      console.log('onVideoRateChange')
+      //
     },
     onVideoSeeking() {
-      console.log('onVideoSeeking')
+      //
     },
     onVideoTimeUpdate() {
       this.setCurrentTime(this.$refs.video.currentTime)
@@ -79,7 +77,7 @@ export default {
       this.ended()
     },
     onVideoError() {
-      console.log('onVideoError')
+      //
     },
   },
 }

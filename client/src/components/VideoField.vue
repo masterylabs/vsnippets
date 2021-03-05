@@ -4,6 +4,8 @@
     :placeholder="placeholder"
     :solo="styled"
     :rounded="styled"
+    outlined
+    label="Video"
     :style="styled ? 'width:350px' : ''"
     :class="styled ? 'ml-video-field-input--centered' : ''"
     @input="input"

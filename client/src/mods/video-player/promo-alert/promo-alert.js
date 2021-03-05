@@ -9,15 +9,25 @@ export default {
 
   computed: {
     showPromoAlert() {
-      return true
+      if (!this.promoAlert.active) return false
+
+      if (
+        this.adminView == 'promoAlert' &&
+        ['paused', 'ready', 'ended'].includes(this.playerState)
+      )
+        return true
+
+      const showTime = this.promoAlert.showTime
+        ? parseInt(this.promoAlert.showTime)
+        : 0
+
+      if (!showTime) return true
+
+      return this.getCurrentTime >= showTime
     },
 
     promoAlertAttrs() {
       return this.promoAlert
     },
-  },
-
-  mounted() {
-    console.log(this.promoAlert)
   },
 }

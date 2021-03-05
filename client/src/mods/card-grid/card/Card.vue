@@ -5,8 +5,12 @@
 
       <!-- Actions  -->
       <v-card-actions>
-        <template v-for="(a, i) in actions">
-          <v-spacer v-if="i == 2" :key="`actionspacer${i}`" />
+        <!-- {{ getActions.length - 2 }} -->
+        <template v-for="(a, i) in getActions">
+          <v-spacer
+            v-if="i == getActions.length - 2"
+            :key="`actionspacer${i}`"
+          />
 
           <v-tooltip :key="a.value" top :disabled="!a.tooltip">
             <template v-slot:activator="tooltip">
@@ -52,6 +56,7 @@
           </v-card-actions>
         </div>
       </v-expand-transition>
+      <!-- itemUrl: {{ itemUrl }} -->
     </v-card>
   </v-hover>
 </template>
@@ -59,6 +64,7 @@
 <script>
   import { defaultValues } from '../config'
   import getUrlMixin from '@/mixins/get-url'
+  import brandMixin from '@/mixins/brand'
 
   export default {
     props: {
@@ -86,7 +92,7 @@
       },
     },
 
-    mixins: [getUrlMixin],
+    mixins: [getUrlMixin, brandMixin],
 
     data() {
       return {
@@ -94,14 +100,21 @@
         del: false,
         actions: [
           {
-            tooltip: 'Copy URL',
-            value: 'link',
-            click: () => this.copyUrl(),
+            tooltip: 'Copy Shortcode',
+            value: 'code-brackets',
+            click: () => this.copyShortcode(),
           },
           {
-            tooltip: 'Open Page',
+            tooltip: 'Copy Quick Link',
+            value: 'link',
+            click: () => this.copyUrl(),
+            hide: () => !this.hasQuickLink,
+          },
+          {
+            tooltip: 'Open Quick Link',
             value: 'open-in-new',
             click: () => this.openLink(),
+            hide: () => !this.hasQuickLink,
           },
           {
             tooltip: 'Edit',
@@ -119,6 +132,15 @@
       }
     },
 
+    computed: {
+      itemUrl() {
+        return this.getUrl(this.item.identifier)
+      },
+      getActions() {
+        return this.actions.filter((a) => !a.hide || !a.hide())
+      },
+    },
+
     methods: {
       onDelete() {
         this.$emit('delete', this.item.id)
@@ -132,13 +154,19 @@
       },
 
       openLink() {
-        const url = this.getUrl(this.item.slug)
+        const url = this.getUrl(this.item.identifier)
         window.open(url)
       },
 
       async copyUrl() {
-        const url = this.getUrl(this.item.slug)
+        const url = this.getUrl(this.item.identifier)
         await this.$copyText(url)
+        this.$app.success('Copied to Clipboard!')
+      },
+
+      async copyShortcode() {
+        const code = `[vsnippets id="${this.item.id}"]`
+        await this.$copyText(code)
         this.$app.success('Copied to Clipboard!')
       },
     },

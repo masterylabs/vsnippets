@@ -49,7 +49,6 @@ export default {
 
   methods: {
     onPagin() {
-      console.log('onPagin')
       this.getItems()
     },
 

@@ -21,7 +21,14 @@ export default {
       return this.endPoster
     },
     showEndPoster() {
-      if (this.endPoster.isPreview && this.playerState == 'ready') return true
+      if (!this.endPoster.active) return false
+
+      if (
+        this.adminView == 'endPoster' &&
+        ['paused', 'ready'].includes(this.playerState)
+      ) {
+        return true
+      }
 
       return this.playerState == 'ended'
     },

@@ -6,7 +6,8 @@
       class="mx-3 my-3"
       :class="!isUseBtn && href ? 'ml-pointer' : ''"
       :dense="isDense"
-      :icon="noIcon ? false : null"
+      :icon="noIcon ? false : alertType == 'warning' ? 'mdi-bullhorn' : null"
+      :color="alertType == 'warning' ? 'orange' : ''"
       @click="onClick"
       @close="onClose"
     >
@@ -24,9 +25,16 @@
             ]"
             :href="href"
             target="_blank"
+            tag="button"
             >{{ btnText || 'BUY NOW' }}
           </v-btn>
-          <v-btn v-if="dismissible" class="my-n1 ml-2" icon @click="onClose"
+          <v-btn
+            v-if="!noClose"
+            class="my-n1 ml-2"
+            icon
+            @click="onClose"
+            @mouseenter="isOverClose = true"
+            @mouseleave="isOverClose = false"
             ><v-icon>mdi-close-circle</v-icon>
           </v-btn>
         </v-row>
@@ -42,7 +50,8 @@
       isPreview: Boolean,
       active: [Boolean, String],
       dense: [Boolean, String],
-      dismissible: [Boolean, String],
+      noClose: [Boolean, String],
+      // dismissible: [Boolean, String],
       alertType: [Boolean, String],
       useBtn: [Boolean, String],
       noIcon: [Boolean, String],
@@ -75,6 +84,7 @@
     data() {
       return {
         isClosed: false,
+        isOverClose: false,
       }
     },
 
@@ -83,7 +93,7 @@
         return this.dense ? true : false
       },
       isDismissible() {
-        return this.dismissible ? true : false
+        return this.noClose ? false : true
       },
       isUseBtn() {
         return this.useBtn ? true : false
@@ -95,6 +105,7 @@
 
     methods: {
       onClick() {
+        if (this.isOverClose) return
         this.$emit('click')
         if (!this.isUseBtn && this.href) window.open(this.href)
       },
@@ -111,7 +122,7 @@
   }
 </script>
 
-<style>
+<style lang="scss">
   .video-player-promo-alert {
     position: absolute;
     top: 0px;
@@ -119,5 +130,9 @@
     width: 100%;
     z-index: 1;
     opacity: 1;
+
+    a {
+      text-decoration: none !important;
+    }
   }
 </style>

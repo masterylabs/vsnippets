@@ -30,6 +30,6 @@ export default {
     return form
   },
   onUpdate: (form) => {
-    console.log('onUpdate', form, fields)
+    //
   },
 }

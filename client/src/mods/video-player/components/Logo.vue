@@ -3,7 +3,7 @@
     <a
       class="video-player-logo"
       :style="
-        `${x}:18px;${y}:${controls ? 20 : 18}px;opacity:${
+        `${x}:10px;${y}:${controls && y == 'bottom' ? 10 : 10}px;opacity:${
           opacity && !hover ? opacity : 1
         }`
       "
@@ -69,10 +69,6 @@
       onClick() {
         if (this.href) this.$emit('click')
       },
-    },
-
-    mounted() {
-      console.log('logo')
     },
   }
 </script>

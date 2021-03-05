@@ -23,9 +23,8 @@
     methods: {
       async update() {
         const jsonData = JSON.stringify(this.data)
-        console.log({ jsonData })
+
         const response = await this.$app.post(this.endpoint, { jsonData })
-        console.log({ response })
       },
     },
 
@@ -33,8 +32,6 @@
       const { data } = await this.$app.get(this.endpoint)
 
       this.data = data
-
-      console.log(data)
     },
   }
 </script>

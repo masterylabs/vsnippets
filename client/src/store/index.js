@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import stripPrefix from '@/helpers/strip-prefix'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
     player: {
-      src: '1O0yazhqaxs',
+      src:
+        'https://player.vimeo.com/external/519422218.sd.mp4?s=abb64be0e34144a31ac14a2aa6450dc8fc217593&profile_id=165', // 'VzK8tWA3rNE', // '1O0yazhqaxs',
     },
     playerBranding: {
       logo: {},
@@ -21,21 +21,6 @@ export default new Vuex.Store({
         ...state.player,
         ...state.playerBranding,
       }
-      // const logo = {
-      //   src: state.playerBranding.logoSrc || '',
-      //   href: state.playerBranding.logoHref || '',
-      //   size: state.playerBranding.logoSize || '',
-      //   position: state.playerBranding.logoPosition || '',
-      //   opacity: state.playerBranding.logoOpacity || '',
-      //   tile: state.playerBranding.logoTile ? true : false,
-      // }
-
-      // console.log('state tile', logo.tile)
-      // return {
-      //   ...state.player,
-      //   ...stripPrefix(state.playerBranding, 'logo'),
-      //   logo,
-      // }
     },
     playerBranding(state) {
       return state.playerBranding

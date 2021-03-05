@@ -44,7 +44,12 @@
                       justify="center"
                       style="height:100%"
                     >
-                      <m-logo size="80" opacity="0.3" force-color="white" />
+                      <m-logo
+                        size="80"
+                        opacity="0.3"
+                        force-color="white"
+                        no-text
+                      />
                     </v-row>
                   </v-card>
                   <v-card-title v-text="item.name || item.title" />
