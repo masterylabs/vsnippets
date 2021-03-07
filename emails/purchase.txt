@@ -1,0 +1,61 @@
+VSnippets: Your Purchase Access Details!
+VSnippets Purchase And Access Details!
+
+  Hey {first_name},
+
+Congratulations on your successful purchase of VSnippets!
+
+Your access has been setup, and you can now login to the members area and download your package.
+
+Accessing Your Purchase:
+Use these login details to login to the
+members area to download your product.
+
+email: {email}
+password: {password}
+
+Login to the members area here:
+https://masterylabs.com/my-products/vsnippets
+
+Once you login, there will a video to show
+you exactly how to install and activate your plugin.
+
+You will also find a quick start guide
+video to show you how to get started
+with your new tool.
+
+
+Trouble Login In?
+
+If you have any trouble login in to the members
+area, please create a new password using the
+login help option on our client login page:
+https://masterylabs.com/login
+
+
+
+Getting Support
+
+If you do not find the video members area helpful,
+or have any trouble accessing your purchase, please
+let us know!
+
+To get support, please open up a ticket here:
+https://masterylabs.freshdesk.com/helpdesk
+
+You can also email us (please include your purchase
+email at:
+support@masterylabs.com
+
+That's it for now. And once again, congratulations
+on making todays purchase and thank you kindly
+for your business.
+
+See in you in the next video. :D
+
+Matt
+
+VSnippets Creator.
+
+Matthew McDonald, MBA
+

@@ -14,6 +14,7 @@ export default new Vuex.Store({
     endPoster: {},
     promoAlert: {},
     pauseBanner: {},
+    extensions: {},
   },
   getters: {
     player(state) {
@@ -34,6 +35,9 @@ export default new Vuex.Store({
     pauseBanner(state) {
       return state.pauseBanner
     },
+    extensions(state) {
+      return state.extensions
+    },
   },
 
   mutations: {
@@ -48,6 +52,9 @@ export default new Vuex.Store({
     },
     SET_PAUSE_BANNER(state, payload) {
       state.pauseBanner = payload
+    },
+    SET_EXTENSIONS(state, payload) {
+      state.extensions = payload
     },
   },
   // actions: {},

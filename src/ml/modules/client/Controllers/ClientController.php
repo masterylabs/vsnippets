@@ -60,6 +60,10 @@ class Masteryl_ClientController
     $data['pause_banner'] = new Masteryl_PauseBanner(true);
     $data['promo_alert'] = new Masteryl_PromoAlert(true);
     $data['end_poster'] = new Masteryl_EndPoster(true);
+
+
+    // extensions
+    $data['extensions'] = !empty($this->app->extensions) ? $this->app->extensions : (object) [];
     
     return $res->json($data);
   }

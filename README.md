@@ -49,3 +49,5 @@ https://youtu.be/gkZEhCeeXkI
 -- client license defaults to empty object, changes validLicense sate, and App.vue
 -- fixed MediaField.vue in client
 -- core vsnippet.php file
+-- add helper functions: masteryl_get_plugin_path, masteryl_is_dev,
+-- extensions module supporting routes

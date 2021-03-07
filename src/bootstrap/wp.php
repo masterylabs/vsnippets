@@ -22,8 +22,12 @@ $app->module('admin-page');
 $app->module('shortcode');
 
 // Routes
+
 require __DIR__ . '/../routes/web.php';
 require __DIR__ . '/../routes/api.php';
+
+$app->module('extensions');
+
 
 
 // footer script

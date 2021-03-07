@@ -7,6 +7,7 @@ export default {
       brand: 'app/brand',
       hasAddon: 'app/hasAddon',
       isBrandClient: 'app/isBrandClient',
+      extensions: 'extensions',
     }),
     brandActive() {
       return this.brand && this.brand.active ? true : false
@@ -90,8 +91,7 @@ export default {
     },
 
     hasQuickLink() {
-      // return true
-      return this.hasAddon.quickLink
+      return this.extensions['vsnippets-quick-links'] ? true : false
     },
 
     hasMarketing() {

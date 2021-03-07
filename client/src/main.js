@@ -35,7 +35,7 @@ const modules = [
   VideoPlayer,
 ]
 
-const mapModules = ['marketing', 'player_branding']
+const mapModules = ['marketing', 'player_branding', 'extensions']
 
 import dev from './plugins/dev'
 

@@ -27,9 +27,12 @@ trait Masteryl_Response_Methods
         exit;
     }
 
-    public function view($view, $args = null, $ext = '.php', $get = false)
+    public function view($view, $args = [], $ext = '.php', $get = false)
     {
-        $path = MASTERYL_APP_PATH . $this->views_dir . '/' . str_replace('.', '/', $view) . $ext;
+      $path = !empty($args['view_path']) ? $args['view_path'] : MASTERYL_APP_PATH . $this->views_dir . '/';
+
+      // $path = MASTERYL_APP_PATH . $this->views_dir . '/' . str_replace('.', '/', $view) . $ext;
+      $path .= str_replace('.', '/', $view) . $ext;
 
         // echo $path;exit;
         $template = new Masteryl_Template($path);

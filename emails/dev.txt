@@ -1,0 +1,61 @@
+VSnippets: Developer Upgrade
+Developer License has been aded to uour vSnippets!
+
+Congratulations {first_name}, we have just added the
+Developer License to your VSnippets!
+
+As a Developer License Holder, you can now
+install this new exciting tool on your clients site.
+
+If you already have the package installed,
+you can simple use your email and password
+to activate your license from inside the plugin.
+
+
+(WP Admin - VSnippets)
+
+Download Your Purchase
+======================
+You can login and download your purchase.
+email: {email}
+password: {password}
+
+Go to:
+https://masterylabs.com/my-products/vsnippets
+
+Once you login, please watch the quick
+start video to get up and running.
+
+Activate Your License
+=====================
+Activating your license is super
+easy and only takes about 20 seconds.
+You can use the above email and password
+to activate. (Please follow the video
+in on the download page, link above)
+
+Getting Support
+===============
+If you still need help, or for some
+reason things are not working as they
+should.. please let us know! We are
+here to help.
+https://masterylabs.freshdesk.com/helpdesk
+
+You can also email us at:
+support@masterylabs.com
+
+That is for this email. Thank you for your
+business today and for being a super customer!
+
+Matt,
+
+VSnippets Creator
+
+P. S. On a personal note, I am always looking for
+user cases from my Developer clients, as it helps
+me create better solutions down the track.
+
+
+.
+

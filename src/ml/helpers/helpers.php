@@ -246,3 +246,25 @@ function masteryl_camelize($i, $sep = '_')
  function masteryl_object_merge($a, $b) {
   return (object) array_merge((array) $a, (array) $b);
 }
+
+function masteryl_is_dev() 
+{
+  $ending = '/src/ml/';
+  return strlen(MASTERYL_PATH) - strlen($ending) == strpos(MASTERYL_PATH, $ending);
+}
+
+function masteryl_get_plugin_path($name, $path = '') {
+
+
+  if(masteryl_is_dev()) {
+    $i = explode('/', trim(MASTERYL_PATH, '/'));
+    $base = "/{$i[0]}/{$i[1]}/{$i[2]}/{$name}/src/";
+    
+  }
+  else {
+    $base = WP_PLUGIN_DIR."/{$name}/";
+  }
+
+  return rtrim($base . ltrim($path.'/'), '/').'/';
+
+}
