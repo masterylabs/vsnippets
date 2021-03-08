@@ -2,7 +2,7 @@
 /*
 Plugin Name: vSnippets
 Description: Video embed only the part you want!
-Version: 1.0.0
+Version: 1.0.1
 Author: Matthew McDonald
 Plugin URI: https://vsnippets.com
 Author URI: https://masterylabs.com

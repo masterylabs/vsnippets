@@ -44,10 +44,10 @@ https://youtu.be/gkZEhCeeXkI
 
 ## Changes to core
 
--- added MetaModel with support for nested objects
--- add helper function masteryl_object_merge
--- client license defaults to empty object, changes validLicense sate, and App.vue
--- fixed MediaField.vue in client
+-- added MetaModel with support for nested objects (added to starter app)
+-- add helper function masteryl_object_merge (added to starter app)
+-- client license defaults to empty object, changes validLicense sate, and App.vue (updated in starter app)
+-- fixed MediaField.vue in client (updated in starter app)
 -- core vsnippet.php file
--- add helper functions: masteryl_get_plugin_path, masteryl_is_dev,
--- extensions module supporting routes
+-- add helper functions: masteryl_get_plugin_path, masteryl_is_dev, (added to starter app)
+-- extensions module supporting routes (added to starter app)

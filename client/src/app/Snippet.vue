@@ -76,10 +76,6 @@
           </v-card-text>
         </v-expand-transition>
       </v-card>
-
-      <!-- <v-divider class="mb-12"></v-divider> -->
-
-      <!-- <dev-raw :value="video.pauseBanner" /> -->
     </div>
 
     <v-btn

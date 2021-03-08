@@ -2,9 +2,8 @@
   <div
     ref="player-wrap"
     :class="`video-player-wrap video-player--${getPlayerState}`"
-    :style="wrapStyle"
   >
-    <v-card @mousemove="onMousemove" tile>
+    <v-card @mousemove="onMousemove" tile :style="wrapStyle">
       <v-responsive :aspect-ratio="aspectRatio" :style="wrapStyle">
         <div
           ref="container"
